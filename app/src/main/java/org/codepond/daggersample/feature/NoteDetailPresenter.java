@@ -16,33 +16,25 @@
 
 package org.codepond.daggersample.feature;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-
 import javax.inject.Inject;
+import javax.inject.Named;
 
-import org.codepond.daggersample.R;
-import dagger.android.AndroidInjection;
+class NoteDetailPresenter {
+    private NoteDetailView featureView;
+    private String someId;
 
-
-public class FeatureActivity extends AppCompatActivity implements FeatureView {
-    public static final String EXTRA_SOME_ID = "some_id";
-    @Inject FeaturePresenter presenter;
-
-    String someId;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        someId = getIntent().getStringExtra(EXTRA_SOME_ID);
-        AndroidInjection.inject(this);
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        presenter.doNothing();
+    @Inject
+    public NoteDetailPresenter(NoteDetailView featureView, @Named("someId") String someId) {
+        this.featureView = featureView;
+        this.someId = someId;
     }
 
-    @Override
     public void doNothing() {
+        featureView.doNothing();
+        execute(someId);
+    }
 
+    private void execute(String someId) {
+        System.out.println("some id :" + someId);
     }
 }

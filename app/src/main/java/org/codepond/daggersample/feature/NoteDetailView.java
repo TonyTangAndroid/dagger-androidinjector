@@ -16,6 +16,6 @@
 
 package org.codepond.daggersample.feature;
 
-interface FeatureView {
+interface NoteDetailView {
     void doNothing();
 }

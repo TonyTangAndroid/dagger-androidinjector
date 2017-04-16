@@ -18,8 +18,8 @@ package org.codepond.daggersample;
 
 import android.app.Activity;
 
-import org.codepond.daggersample.feature.FeatureActivity;
-import org.codepond.daggersample.feature.FeatureSubComponent;
+import org.codepond.daggersample.feature.NoteDetailActivity;
+import org.codepond.daggersample.feature.NoteDetailSubComponent;
 
 import dagger.Binds;
 import dagger.Module;
@@ -34,8 +34,8 @@ import dagger.multibindings.IntoMap;
 public abstract class BuildersModule {
     @Binds
     @IntoMap
-    @ActivityKey(FeatureActivity.class)
-    abstract AndroidInjector.Factory<? extends Activity> bindFeatureActivityInjectorFactory(FeatureSubComponent.Builder builder);
+    @ActivityKey(NoteDetailActivity.class)
+    abstract AndroidInjector.Factory<? extends Activity> bindFeatureActivityInjectorFactory(NoteDetailSubComponent.Builder builder);
 
     // Add another builder binding here
 }

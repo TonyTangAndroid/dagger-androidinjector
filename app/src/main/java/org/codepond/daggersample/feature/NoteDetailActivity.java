@@ -14,21 +14,38 @@
  * limitations under the License.
  */
 
-package org.codepond.daggersample;
+package org.codepond.daggersample.feature;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 
-import org.codepond.daggersample.feature.NoteDetailActivity;
+import org.codepond.daggersample.R;
 
-public class MainActivity extends Activity {
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
+
+
+public class NoteDetailActivity extends AppCompatActivity implements NoteDetailView {
+    public static final String EXTRA_SOME_ID = "some_id";
+    @Inject
+    NoteDetailPresenter presenter;
+
+    String someId;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        someId = getIntent().getStringExtra(EXTRA_SOME_ID);
+        AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
-        Intent intent = new Intent(this, NoteDetailActivity.class);
-        intent.putExtra(NoteDetailActivity.EXTRA_SOME_ID, "id_1");
-        startActivity(intent);
+        setContentView(R.layout.activity_main);
+        presenter.doNothing();
+    }
+
+    @Override
+    public void doNothing() {
+
+        System.out.println("doNothing");
     }
 }

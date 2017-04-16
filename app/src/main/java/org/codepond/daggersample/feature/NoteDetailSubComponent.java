@@ -16,20 +16,15 @@
 
 package org.codepond.daggersample.feature;
 
-import javax.inject.Inject;
-import javax.inject.Named;
+import dagger.Subcomponent;
+import dagger.android.AndroidInjector;
 
-class FeaturePresenter {
-    private FeatureView featureView;
-    private String someId;
-
-    @Inject
-    public FeaturePresenter(FeatureView featureView, @Named("someId") String someId) {
-        this.featureView = featureView;
-        this.someId = someId;
-    }
-
-    public void doNothing() {
-        featureView.doNothing();
+/**
+ * Feature level component
+ */
+@Subcomponent(modules = { NoteDetailModule.class })
+public interface NoteDetailSubComponent extends AndroidInjector<NoteDetailActivity> {
+    @Subcomponent.Builder
+    abstract class Builder extends AndroidInjector.Builder<NoteDetailActivity> {
     }
 }
