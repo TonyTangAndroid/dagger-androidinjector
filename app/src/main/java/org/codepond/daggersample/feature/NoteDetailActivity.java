@@ -45,7 +45,6 @@ public class NoteDetailActivity extends AppCompatActivity implements NoteDetailV
 
     @Override
     public void doNothing() {
-
         System.out.println("doNothing");
     }
 }

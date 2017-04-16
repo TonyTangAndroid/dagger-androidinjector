@@ -31,5 +31,6 @@ public class AppModule {
         return application.getApplicationContext();
     }
 
+
     // Add application level bindings here, e.g.: RestClientApi, Repository, etc.
 }

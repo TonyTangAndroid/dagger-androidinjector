@@ -34,6 +34,12 @@ class NoteDetailPresenter {
         execute(someId);
     }
 
+    public void doNothingMore() {
+        System.out.println("doNothingMore");
+
+    }
+
+
     private void execute(String someId) {
         System.out.println("some id :" + someId);
     }
